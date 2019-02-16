@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Challenge_dog
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            dog puppy = new dog("Orion", "Shawn", 2, Gender.Female);  // create object instance
+            puppy.Bark(3); // output: Woof!Woof!Woof!
+            Console.WriteLine(puppy.GetTag());
+        }
+    }
+    public enum Gender
+    {
+        Male,
+        Female
+    }
+    public class dog
+    {
+        public string name;
+        public string owner;
+        public int age;
+        public Gender gender;
+
+        public dog(string name1, string owner1, int age1, Gender gender1)
+            {
+            name = name1;
+            owner = owner1;
+            age = age1;
+            gender = gender1;
+            }
+        public void Bark(int woof)
+        {
+            int i = 0;
+            for (i = 0; i < woof; i++)
+                Console.WriteLine("Woof!");
+        }
+
+        public string GetTag()
+        {
+            string response = "If lost, call "+owner;
+            if (gender == Gender.Male)
+                response = response + ". His";
+            else
+                response = response + ". Her";
+            response = response + " name is " + name;
+            if (gender == Gender.Male)
+                response = response + " and he ";
+            else
+                response = response + " and she ";
+            response = response + "is " + age + " year";
+            if (age > 1)
+                response = response + "s";
+            response = response + " old.";
+            return response;
+
+
+        }
+    }
+}
